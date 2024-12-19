@@ -1,0 +1,69 @@
+ Table City {
+  ID int [PK, not null]
+  Name char
+  CountryCode char [not null]
+  District char
+  Population integer
+  CityNumber integer
+}
+
+Table Country {
+  Code char [PK, not null] 
+  Name char [not null, unique]
+  Continent string
+  district char
+  population int
+}
+
+Table CountryLanguage {
+  CountryCode char [PK, not null]
+  Language string 
+  Percentage float
+}
+
+Table JobPost {
+  jobTitle string 
+  companyName string 
+  hiringStatus enum
+  location string
+  job_Function string
+  date datetime
+  seniorLevel string 
+  employment_Type string 
+  maxSalary float
+  listedTime time
+  zipCode int
+}
+
+Table Occupation {
+  occupationCode int [unique]
+  jobTitle string [PK, not null]
+  industry string
+}
+
+Table AITechnology {
+  adoptionLevel string
+  probOfAutomation float
+  companySize int
+  requiredSkills string
+}
+
+//One to many
+//A country can have many cities, and a city belongs to one country
+Ref: City.CountryCode > Country.Code
+Ref: JobPost.location > City.Name
+Ref: JobPost.jobTitle > Occupation.jobTitle 
+Ref: CountryLanguage.CountryCode <> Country.Code
+Ref: Occupation.jobTitle <> AITechnology.adoptionLevel
+
+//One to one relation
+//An occupation has a single job title while a job post also has a single job title
+
+
+//Notes:
+//(<): one-to-many. E.g: users.id < posts.user_id
+//(>): many-to-one. E.g: posts.user_id > users.id
+//(-): one-to-one. E.g: users.id - user_infos.user_id
+//(<>): many-to-many. E.g: authors.id <> books.id
+//Foreign Composite Key Example Notation:
+      //Ref: City.(id,CountryCode) - Country.(CountryCode,Name)

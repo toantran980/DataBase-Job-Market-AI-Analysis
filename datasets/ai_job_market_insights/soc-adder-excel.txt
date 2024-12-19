@@ -1,0 +1,3 @@
+Reference: https://www.bls.gov/oes/
+
+=IF(B2="HR Manager","11-3121",IF(B2="Cybersecurity Analyst", "15-1212", IF(B2="Marketing Specialist", "13-1161", IF(B2="AI Researcher", "15-1221", IF(B2="Sales Manager", "11-2022", IF(B2="UX Designer", "15-1255", IF(B2="Software Engineer", "15-1252", IF(B2="Data Scientist", "15-2051", IF(B2="Operations Manager", "11-1021", IF(B2="Product Manager", "11-3021", ""))))))))))
